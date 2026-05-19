@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "title": "Immigration Evaluator",
+    "description": "Enter your personal information to get a professional immigration feasibility analysis"
+  },
+  "nav": {
+    "title": "Immigrate",
+    "subtitle": "AI-Powered Immigration Planning"
+  },
+  "form": {
+    "step1": {
+      "title": "Personal Information",
+      "subtitle": "Tell us about yourself"
+    },
+    "step2": {
+      "title": "Finance & Career",
+      "subtitle": "Your financial foundation and professional background"
+    },
+    "step3": {
+      "title": "Immigration Goals",
+      "subtitle": "Where you want to go and why"
+    },
+    "fields": {
+      "age": "Age",
+      "age_placeholder": "Enter your age",
+      "gender": "Gender",
+      "gender_male": "Male",
+      "gender_female": "Female",
+      "gender_other": "Other",
+      "marital_status": "Marital Status",
+      "single": "Single",
+      "married": "Married",
+      "divorced": "Divorced",
+      "widowed": "Widowed",
+      "children": "Number of Children",
+      "nationality": "Nationality",
+      "nationality_placeholder": "e.g. Chinese",
+      "education": "Highest Education",
+      "high_school": "High School / Vocational",
+      "associate": "Associate Degree",
+      "bachelor": "Bachelor's Degree",
+      "master": "Master's Degree",
+      "phd": "PhD / Doctorate",
+      "occupation": "Occupation / Field",
+      "occupation_placeholder": "e.g. Software Engineer, Financial Analyst, Doctor",
+      "work_experience": "Years of Work Experience",
+      "has_job_offer": "Have an overseas job offer",
+      "english_level": "English Proficiency",
+      "english_none": "Basic (A1)",
+      "english_basic": "Conversational (A2)",
+      "english_intermediate": "Working (B2)",
+      "english_advanced": "Fluent (C1)",
+      "english_native": "Native (C2)",
+      "other_languages": "Other Languages (optional)",
+      "other_languages_placeholder": "e.g. Japanese N2, French B1",
+      "funds_cny": "Available Funds (CNY)",
+      "funds_cny_placeholder": "e.g. 500000",
+      "funds_cny_hint": "Including savings and liquidatable assets",
+      "monthly_income": "Monthly Income in CNY (optional)",
+      "monthly_income_placeholder": "e.g. 30000",
+      "has_passive_income": "Have stable passive income",
+      "has_passive_income_hint": "e.g. rent, dividends, pension",
+      "target": "Target Country / Region",
+      "target_placeholder": "e.g. Portugal, Europe, Southeast Asia, Japan",
+      "target_hint": "Can be a specific country or broad region",
+      "motivations": "Immigration Motivations (multi-select)",
+      "motivation_work": "Work / Career Development",
+      "motivation_retirement": "Retirement",
+      "motivation_investment": "Investment / Asset Allocation",
+      "motivation_education": "Children's Education",
+      "motivation_lifestyle": "Lifestyle / Climate",
+      "motivation_safety": "Safety / Stability",
+      "motivation_family": "Family Reunification",
+      "motivation_tax": "Tax Planning",
+      "timeline_preference": "Preferred Timeline",
+      "timeline_asap": "As soon as possible (1-2 years)",
+      "timeline_3years": "Within 3 years",
+      "timeline_5years": "Within 5 years",
+      "timeline_flexible": "Flexible",
+      "willing_to_learn_language": "Willing to learn local language",
+      "willing_to_renounce": "Open to renouncing Chinese citizenship"
+    },
+    "buttons": {
+      "next": "Next",
+      "prev": "Back",
+      "submit": "Analyze Now",
+      "analyzing": "AI Analyzing..."
+    },
+    "progress": "Step {current} of {total}"
+  },
+  "result": {
+    "title": "Immigration Assessment Report",
+    "subtitle": "Personalized analysis based on your profile",
+    "verdict": {
+      "feasible": "Feasible",
+      "partially_feasible": "Partially Feasible",
+      "not_feasible": "Not Currently Feasible"
+    },
+    "pathways": {
+      "title": "Viable Pathways",
+      "feasibility": "Feasibility",
+      "timeline": "Est. Timeline",
+      "cost": "One-time Cost",
+      "pr": "PR Available",
+      "citizenship": "Citizenship",
+      "yes": "Yes",
+      "no": "No",
+      "years": "yrs",
+      "months": "months",
+      "met": "Met",
+      "gaps": "Gaps",
+      "steps": "Step Plan"
+    },
+    "financial": {
+      "title": "Financial Analysis",
+      "subtitle": "How long your funds last in the target country",
+      "frugal": "Frugal",
+      "comfortable": "Comfortable",
+      "wealthy": "Wealthy",
+      "per_month": "/mo",
+      "sustainable": "Sustainable",
+      "one_time": "One-time Immigration Costs",
+      "visa_fees": "Visa Application Fees",
+      "legal_fees": "Legal / Agency Fees",
+      "relocation": "Relocation Costs",
+      "total": "Total"
+    },
+    "timeline": {
+      "title": "Timeline",
+      "preparation": "Preparation",
+      "application": "Application",
+      "approval": "Approval",
+      "total": "Total",
+      "milestones": "Key Milestones"
+    },
+    "life": {
+      "title": "Life Planning",
+      "housing": "Housing",
+      "healthcare": "Healthcare",
+      "tax": "Tax Implications",
+      "integration": "Integration Tips",
+      "community": "Chinese Community",
+      "education": "Children's Education"
+    },
+    "restart": "New Assessment",
+    "share": "Share Report"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again.",
+    "lang_switch": "中文"
+  }
+}

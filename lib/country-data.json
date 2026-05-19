@@ -1,0 +1,560 @@
+{
+  "regions": {
+    "europe": ["portugal", "germany", "spain", "netherlands", "france", "italy", "greece", "malta", "ireland", "austria"],
+    "north_america": ["canada", "usa", "mexico"],
+    "asia_pacific": ["australia", "new_zealand", "singapore", "japan", "south_korea", "thailand", "malaysia"],
+    "middle_east": ["uae", "qatar"],
+    "latin_america": ["brazil", "argentina", "chile", "colombia", "panama"],
+    "caribbean": ["barbados", "cayman_islands", "bermuda"]
+  },
+  "countries": {
+    "portugal": {
+      "name_zh": "葡萄牙",
+      "name_en": "Portugal",
+      "currency": "EUR",
+      "main_pathways": [
+        {
+          "name": "黄金签证 (Golden Visa)",
+          "type": "investment",
+          "min_investment_eur": 500000,
+          "pr_after_years": 5,
+          "citizenship_after_years": 5,
+          "language_required": "Portuguese A2",
+          "requirements": "投资50万欧元（基金/资本转让），无居住要求（每年7天），适合不想长期居住的投资者",
+          "difficulty": "medium"
+        },
+        {
+          "name": "D7 被动收入签证",
+          "type": "passive_income",
+          "min_monthly_income_eur": 760,
+          "pr_after_years": 5,
+          "citizenship_after_years": 5,
+          "language_required": "Portuguese A2 for citizenship",
+          "requirements": "每月稳定被动收入（退休金/租金/投资），需实际居住",
+          "difficulty": "easy"
+        },
+        {
+          "name": "数字游民签证 (D8)",
+          "type": "remote_work",
+          "min_monthly_income_eur": 3040,
+          "pr_after_years": 5,
+          "citizenship_after_years": 5,
+          "language_required": "None initially",
+          "requirements": "远程工作者/自雇，月收入至少3040欧元，需实际居住",
+          "difficulty": "easy"
+        }
+      ],
+      "cost_of_living": {
+        "city": "里斯本",
+        "frugal_monthly_eur": 1200,
+        "comfortable_monthly_eur": 2200,
+        "wealthy_monthly_eur": 4500
+      },
+      "tax_notes": "NHR税务优惠制度（10年），外国来源收入可享受优惠税率",
+      "pros": ["欧盟申根区", "英语普及", "气候宜人", "相对低成本", "华人社区成熟"],
+      "cons": ["葡语入籍要求", "官僚程序较慢", "黄金签证政策变化"]
+    },
+    "germany": {
+      "name_zh": "德国",
+      "name_en": "Germany",
+      "currency": "EUR",
+      "main_pathways": [
+        {
+          "name": "技术移民 (Skilled Worker Visa)",
+          "type": "skilled_work",
+          "min_salary_eur": 45300,
+          "pr_after_years": 4,
+          "citizenship_after_years": 5,
+          "language_required": "German B1",
+          "requirements": "大学学历+职业认证，有工作offer，年薪达标",
+          "difficulty": "medium"
+        },
+        {
+          "name": "机会卡 (Opportunity Card)",
+          "type": "job_seeker",
+          "points_required": 6,
+          "stay_months": 12,
+          "language_required": "German B2 or English B2",
+          "requirements": "积分制，大学学历+语言+工作经验，来德找工作",
+          "difficulty": "medium"
+        },
+        {
+          "name": "自雇签证",
+          "type": "self_employment",
+          "min_investment_eur": 250000,
+          "pr_after_years": 3,
+          "citizenship_after_years": 8,
+          "requirements": "在德创业或自雇，需商业计划和足够资金",
+          "difficulty": "hard"
+        }
+      ],
+      "cost_of_living": {
+        "city": "柏林/慕尼黑",
+        "frugal_monthly_eur": 1500,
+        "comfortable_monthly_eur": 2800,
+        "wealthy_monthly_eur": 5500
+      },
+      "tax_notes": "税率较高（收入税19-45%），但福利完善",
+      "pros": ["欧洲最强经济体", "完善社会福利", "教育质量高", "就业市场强"],
+      "cons": ["德语必须", "官僚文化", "生活节奏较慢", "气候较冷"]
+    },
+    "canada": {
+      "name_zh": "加拿大",
+      "name_en": "Canada",
+      "currency": "CAD",
+      "main_pathways": [
+        {
+          "name": "快速通道 (Express Entry)",
+          "type": "skilled_work",
+          "min_clb": 7,
+          "pr_after_years": 0,
+          "citizenship_after_years": 3,
+          "language_required": "English CLB7+",
+          "requirements": "CRS积分制，技术工人类/综合移民类，积分越高越快获邀",
+          "difficulty": "medium",
+          "typical_processing_months": 6
+        },
+        {
+          "name": "省提名计划 (PNP)",
+          "type": "provincial_nominee",
+          "pr_after_years": 1,
+          "citizenship_after_years": 3,
+          "language_required": "English CLB5+",
+          "requirements": "各省各有不同流，部分不需要高分，适合特定职业",
+          "difficulty": "medium"
+        },
+        {
+          "name": "投资移民 (Start-Up Visa)",
+          "type": "investment",
+          "min_investment_cad": 200000,
+          "pr_after_years": 2,
+          "citizenship_after_years": 3,
+          "requirements": "需获得加拿大指定投资机构支持，英语B2",
+          "difficulty": "hard"
+        }
+      ],
+      "cost_of_living": {
+        "city": "多伦多/温哥华",
+        "frugal_monthly_cad": 2500,
+        "comfortable_monthly_cad": 4500,
+        "wealthy_monthly_cad": 9000
+      },
+      "tax_notes": "联邦+省税，综合税率20-53%，但医疗免费",
+      "pros": ["英语国家", "多元文化", "华人社区大", "自然环境好", "社会福利完善"],
+      "cons": ["房价极高(多伦多/温哥华)", "冬季严寒", "就业竞争激烈"]
+    },
+    "australia": {
+      "name_zh": "澳大利亚",
+      "name_en": "Australia",
+      "currency": "AUD",
+      "main_pathways": [
+        {
+          "name": "技术独立移民 (189签证)",
+          "type": "skilled_independent",
+          "points_required": 65,
+          "pr_after_years": 0,
+          "citizenship_after_years": 4,
+          "language_required": "English IELTS 6.0+",
+          "requirements": "积分制，职业在移民职业清单上，EOI邀请制",
+          "difficulty": "medium"
+        },
+        {
+          "name": "技术提名移民 (190签证)",
+          "type": "state_nominated",
+          "points_required": 65,
+          "pr_after_years": 0,
+          "citizenship_after_years": 4,
+          "language_required": "English IELTS 6.0+",
+          "requirements": "州政府提名，获额外5分，需在该州居住",
+          "difficulty": "medium"
+        },
+        {
+          "name": "投资移民 (188/888签证)",
+          "type": "investment",
+          "min_investment_aud": 1500000,
+          "pr_after_years": 4,
+          "citizenship_after_years": 5,
+          "requirements": "商业创新和投资流，资产净值要求高",
+          "difficulty": "hard"
+        }
+      ],
+      "cost_of_living": {
+        "city": "悉尼/墨尔本",
+        "frugal_monthly_aud": 2800,
+        "comfortable_monthly_aud": 5000,
+        "wealthy_monthly_aud": 10000
+      },
+      "tax_notes": "税率较高（19-45%），医疗保险Medicare",
+      "pros": ["英语国家", "高生活质量", "气候宜人", "华人社区成熟", "教育医疗完善"],
+      "cons": ["物价高", "房价极贵", "地处偏远", "移民政策收紧"]
+    },
+    "singapore": {
+      "name_zh": "新加坡",
+      "name_en": "Singapore",
+      "currency": "SGD",
+      "main_pathways": [
+        {
+          "name": "就业准证 (EP)",
+          "type": "skilled_work",
+          "min_monthly_salary_sgd": 5600,
+          "pr_after_years": 2,
+          "citizenship_after_years": 5,
+          "language_required": "English",
+          "requirements": "名校学历+知名公司+高薪资，EP转PR竞争激烈",
+          "difficulty": "hard"
+        },
+        {
+          "name": "全球商业人才准证 (ONE Pass)",
+          "type": "top_talent",
+          "min_monthly_salary_sgd": 30000,
+          "pr_after_years": 2,
+          "citizenship_after_years": 5,
+          "requirements": "顶尖人才，月薪3万新币或具有特定成就",
+          "difficulty": "very_hard"
+        },
+        {
+          "name": "家族办公室/投资",
+          "type": "investment",
+          "min_investment_sgd": 2500000,
+          "pr_after_years": 2,
+          "citizenship_after_years": 5,
+          "requirements": "家族办公室设立或直接投资，审核严格",
+          "difficulty": "hard"
+        }
+      ],
+      "cost_of_living": {
+        "city": "新加坡",
+        "frugal_monthly_sgd": 2500,
+        "comfortable_monthly_sgd": 5000,
+        "wealthy_monthly_sgd": 12000
+      },
+      "tax_notes": "个税极低（最高22%），无资本利得税，无遗产税",
+      "pros": ["无资本利得税", "安全稳定", "英语环境", "金融中心", "华语通用"],
+      "cons": ["极高消费", "竞争激烈", "PR批准率低", "入籍放弃原籍"]
+    },
+    "japan": {
+      "name_zh": "日本",
+      "name_en": "Japan",
+      "currency": "JPY",
+      "main_pathways": [
+        {
+          "name": "高度专业人才 (高度人材)",
+          "type": "skilled_work",
+          "points_required": 70,
+          "pr_after_years": 1,
+          "citizenship_after_years": 5,
+          "language_required": "Japanese N1/N2 or English",
+          "requirements": "积分制，学历+收入+年龄+日语，70分可1年获PR，80分可6个月",
+          "difficulty": "medium"
+        },
+        {
+          "name": "经营管理签证",
+          "type": "business",
+          "min_investment_jpy": 5000000,
+          "pr_after_years": 5,
+          "citizenship_after_years": 10,
+          "requirements": "在日本注册公司，投资500万日元，需有雇员",
+          "difficulty": "medium"
+        }
+      ],
+      "cost_of_living": {
+        "city": "东京/大阪",
+        "frugal_monthly_jpy": 150000,
+        "comfortable_monthly_jpy": 280000,
+        "wealthy_monthly_jpy": 600000
+      },
+      "tax_notes": "最高55%个税（含地方税），但生活成本相对欧美低",
+      "pros": ["安全", "医疗完善", "生活质量高", "文化丰富", "相对低物价（对比欧美）"],
+      "cons": ["日语是壁垒", "文化融入难", "入籍须放弃原籍", "工作文化压力大"]
+    },
+    "new_zealand": {
+      "name_zh": "新西兰",
+      "name_en": "New Zealand",
+      "currency": "NZD",
+      "main_pathways": [
+        {
+          "name": "技术移民 (Skilled Migrant Category)",
+          "type": "skilled_work",
+          "points_required": 160,
+          "pr_after_years": 0,
+          "citizenship_after_years": 5,
+          "language_required": "English IELTS 6.5",
+          "requirements": "积分制，职业+年龄+学历+新西兰工作经验",
+          "difficulty": "medium"
+        },
+        {
+          "name": "投资移民 (Investor Visa)",
+          "type": "investment",
+          "min_investment_nzd": 3000000,
+          "pr_after_years": 4,
+          "citizenship_after_years": 5,
+          "requirements": "300万新西兰元投资，居住要求低",
+          "difficulty": "hard"
+        }
+      ],
+      "cost_of_living": {
+        "city": "奥克兰/惠灵顿",
+        "frugal_monthly_nzd": 2500,
+        "comfortable_monthly_nzd": 4500,
+        "wealthy_monthly_nzd": 9000
+      },
+      "tax_notes": "税率10.5-39%，无资本利得税",
+      "pros": ["英语国家", "自然环境极佳", "生活节奏轻松", "华人社区"],
+      "cons": ["地理偏僻", "就业机会少（对比澳大利亚）", "物价高", "房价贵"]
+    },
+    "greece": {
+      "name_zh": "希腊",
+      "name_en": "Greece",
+      "currency": "EUR",
+      "main_pathways": [
+        {
+          "name": "黄金签证",
+          "type": "investment",
+          "min_investment_eur": 250000,
+          "pr_after_years": 5,
+          "citizenship_after_years": 7,
+          "language_required": "Greek for citizenship",
+          "requirements": "购买25万欧元不动产（部分热门区域已提高到50万），无居住要求",
+          "difficulty": "easy"
+        }
+      ],
+      "cost_of_living": {
+        "city": "雅典",
+        "frugal_monthly_eur": 900,
+        "comfortable_monthly_eur": 1800,
+        "wealthy_monthly_eur": 4000
+      },
+      "tax_notes": "外国人退休收入7%固定税率优惠",
+      "pros": ["欧盟申根", "气候极佳", "生活成本低", "黄金签证起点低", "地中海生活"],
+      "cons": ["就业机会有限", "希腊语入籍", "经济较弱", "医疗水平参差不齐"]
+    },
+    "malta": {
+      "name_zh": "马耳他",
+      "name_en": "Malta",
+      "currency": "EUR",
+      "main_pathways": [
+        {
+          "name": "马耳他永居计划 (MRVP)",
+          "type": "investment",
+          "min_investment_eur": 150000,
+          "pr_after_years": 0,
+          "citizenship_after_years": 1,
+          "language_required": "None",
+          "requirements": "缴纳政府贡献费+购买/租赁房产+慈善捐款，1年可入籍",
+          "difficulty": "easy",
+          "notes": "费用总计约75-100万欧元可换欧盟护照"
+        }
+      ],
+      "cost_of_living": {
+        "city": "瓦莱塔",
+        "frugal_monthly_eur": 1000,
+        "comfortable_monthly_eur": 2000,
+        "wealthy_monthly_eur": 4500
+      },
+      "tax_notes": "非居民税务优惠，无全球收入征税",
+      "pros": ["欧盟护照（申根+英国免签）", "英语官方语言", "地中海气候", "速度最快的欧盟入籍"],
+      "cons": ["费用极高", "岛国局限", "就业有限", "房价上涨"]
+    },
+    "spain": {
+      "name_zh": "西班牙",
+      "name_en": "Spain",
+      "currency": "EUR",
+      "main_pathways": [
+        {
+          "name": "数字游民签证",
+          "type": "remote_work",
+          "min_monthly_income_eur": 2334,
+          "pr_after_years": 5,
+          "citizenship_after_years": 10,
+          "language_required": "None initially",
+          "requirements": "远程工作者，月收入约2334欧元，工作非西班牙公司",
+          "difficulty": "easy"
+        },
+        {
+          "name": "黄金签证",
+          "type": "investment",
+          "min_investment_eur": 500000,
+          "pr_after_years": 5,
+          "citizenship_after_years": 10,
+          "requirements": "购买50万欧元不动产（注意：已立法废除，请确认最新政策）",
+          "difficulty": "medium"
+        }
+      ],
+      "cost_of_living": {
+        "city": "马德里/巴塞罗那",
+        "frugal_monthly_eur": 1100,
+        "comfortable_monthly_eur": 2200,
+        "wealthy_monthly_eur": 5000
+      },
+      "tax_notes": "Beckham Law：前6年仅对西班牙收入征税24%固定税率",
+      "pros": ["欧盟申根", "气候极佳", "文化丰富", "美食", "生活方式"],
+      "cons": ["西语入籍（10年）", "就业率低", "官僚效率低", "黄金签证面临废除"]
+    },
+    "uae": {
+      "name_zh": "阿联酋",
+      "name_en": "UAE (Dubai)",
+      "currency": "AED",
+      "main_pathways": [
+        {
+          "name": "黄金签证 (Golden Visa)",
+          "type": "investment_or_talent",
+          "min_investment_aed": 2000000,
+          "stay_years": 10,
+          "citizenship_possible": false,
+          "language_required": "None",
+          "requirements": "200万迪拉姆投资/不动产，或特殊人才/优秀毕业生，10年长签",
+          "difficulty": "medium"
+        },
+        {
+          "name": "自由区公司+工作签证",
+          "type": "business",
+          "min_investment_aed": 20000,
+          "stay_years": 3,
+          "requirements": "在迪拜自由区注册公司，签发工作居留",
+          "difficulty": "easy"
+        }
+      ],
+      "cost_of_living": {
+        "city": "迪拜",
+        "frugal_monthly_aed": 6000,
+        "comfortable_monthly_aed": 12000,
+        "wealthy_monthly_aed": 30000
+      },
+      "tax_notes": "个人所得税为零，无资本利得税，VAT 5%",
+      "pros": ["零个税", "国际枢纽", "生活条件好", "签证相对容易", "时区优势"],
+      "cons": ["无法永久居留/入籍", "文化限制", "高温", "生活成本高", "依赖工作/投资"]
+    },
+    "thailand": {
+      "name_zh": "泰国",
+      "name_en": "Thailand",
+      "currency": "THB",
+      "main_pathways": [
+        {
+          "name": "LTR签证（长期居民签）",
+          "type": "passive_income",
+          "min_income_usd": 80000,
+          "stay_years": 10,
+          "citizenship_possible": false,
+          "language_required": "None",
+          "requirements": "年收入8万美元或资产100万美元，10年可更新签证",
+          "difficulty": "medium"
+        },
+        {
+          "name": "泰国精英签证 (Thailand Elite)",
+          "type": "investment",
+          "min_fee_thb": 600000,
+          "stay_years": 5,
+          "citizenship_possible": false,
+          "requirements": "购买会员资格，5-20年居住权，无工作权",
+          "difficulty": "easy"
+        }
+      ],
+      "cost_of_living": {
+        "city": "曼谷/清迈",
+        "frugal_monthly_thb": 20000,
+        "comfortable_monthly_thb": 50000,
+        "wealthy_monthly_thb": 120000
+      },
+      "tax_notes": "外国来源收入汇入泰国须缴税（新税规2024年生效），境内收入正常征税",
+      "pros": ["生活成本极低", "气候温暖", "美食", "医疗成本低", "华人多"],
+      "cons": ["无永居/入籍路径", "税务政策变化", "外籍人土地购买受限", "签证需续签"]
+    },
+    "malaysia": {
+      "name_zh": "马来西亚",
+      "name_en": "Malaysia",
+      "currency": "MYR",
+      "main_pathways": [
+        {
+          "name": "MM2H (第二家园计划)",
+          "type": "passive_income",
+          "min_deposit_myr": 1000000,
+          "stay_years": 10,
+          "citizenship_possible": false,
+          "language_required": "None",
+          "requirements": "存款100万林吉特+月收入4万林吉特+医疗保险，10年可更新",
+          "difficulty": "medium"
+        }
+      ],
+      "cost_of_living": {
+        "city": "吉隆坡/槟城",
+        "frugal_monthly_myr": 3000,
+        "comfortable_monthly_myr": 7000,
+        "wealthy_monthly_myr": 18000
+      },
+      "tax_notes": "外国收入免税，本地收入征税0-30%",
+      "pros": ["华语环境", "生活成本低", "气候温暖", "医疗质量好", "英语普及"],
+      "cons": ["无入籍路径", "MM2H政策多变", "政治稳定性", "外籍购房限制"]
+    },
+    "usa": {
+      "name_zh": "美国",
+      "name_en": "United States",
+      "currency": "USD",
+      "main_pathways": [
+        {
+          "name": "EB-5投资移民",
+          "type": "investment",
+          "min_investment_usd": 800000,
+          "pr_after_years": 2,
+          "citizenship_after_years": 5,
+          "language_required": "None",
+          "requirements": "投资80万美元（目标就业区）或105万，创造10个就业岗位",
+          "difficulty": "hard"
+        },
+        {
+          "name": "职业移民（EB-1/EB-2/EB-3）",
+          "type": "skilled_work",
+          "pr_after_years": 5,
+          "citizenship_after_years": 5,
+          "language_required": "English",
+          "requirements": "需雇主担保或NIW（国家利益豁免），中国籍排期极长（10-20年）",
+          "difficulty": "very_hard",
+          "notes": "中国国籍排期极长，实际等待时间远超名义要求"
+        }
+      ],
+      "cost_of_living": {
+        "city": "纽约/洛杉矶/旧金山",
+        "frugal_monthly_usd": 2500,
+        "comfortable_monthly_usd": 5000,
+        "wealthy_monthly_usd": 12000
+      },
+      "tax_notes": "全球征税，绿卡持有者也须申报全球收入，税率较高",
+      "pros": ["经济机会多", "顶尖大学", "技术生态", "多元文化"],
+      "cons": ["移民排期极长（中国籍）", "医疗极贵", "政治环境不稳定", "全球征税"]
+    },
+    "south_korea": {
+      "name_zh": "韩国",
+      "name_en": "South Korea",
+      "currency": "KRW",
+      "main_pathways": [
+        {
+          "name": "F-2-7点数制居留",
+          "type": "skilled_work",
+          "points_required": 80,
+          "pr_after_years": 3,
+          "citizenship_after_years": 5,
+          "language_required": "Korean TOPIK 4+",
+          "requirements": "积分制，学历+收入+韩语+年龄，PR后可申请入籍",
+          "difficulty": "medium"
+        },
+        {
+          "name": "投资移民 (D-8/F-2)",
+          "type": "investment",
+          "min_investment_krw": 100000000,
+          "pr_after_years": 3,
+          "citizenship_after_years": 5,
+          "requirements": "在韩投资1亿韩元以上，雇用韩国员工",
+          "difficulty": "medium"
+        }
+      ],
+      "cost_of_living": {
+        "city": "首尔",
+        "frugal_monthly_krw": 1500000,
+        "comfortable_monthly_krw": 3000000,
+        "wealthy_monthly_krw": 7000000
+      },
+      "tax_notes": "个税6-45%，与中国税制类似",
+      "pros": ["现代化设施", "医疗极佳且便宜", "安全", "互联网发达", "邻近中国"],
+      "cons": ["韩语壁垒", "文化融入难", "对华关系敏感", "入籍须放弃原籍"]
+    }
+  }
+}

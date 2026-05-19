@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "title": "移民评估工具",
+    "description": "输入您的个人信息，获取专业的移民可行性分析"
+  },
+  "nav": {
+    "title": "移民评估",
+    "subtitle": "AI 驱动的移民路径规划"
+  },
+  "form": {
+    "step1": {
+      "title": "个人基本信息",
+      "subtitle": "告诉我们您的基本情况"
+    },
+    "step2": {
+      "title": "财务与职业",
+      "subtitle": "您的经济基础和专业背景"
+    },
+    "step3": {
+      "title": "移民目标",
+      "subtitle": "您想去哪里，以及为什么"
+    },
+    "fields": {
+      "age": "年龄",
+      "age_placeholder": "请输入年龄",
+      "gender": "性别",
+      "gender_male": "男",
+      "gender_female": "女",
+      "gender_other": "其他",
+      "marital_status": "婚姻状况",
+      "single": "单身",
+      "married": "已婚",
+      "divorced": "离婚",
+      "widowed": "丧偶",
+      "children": "子女数量",
+      "nationality": "国籍",
+      "nationality_placeholder": "如：中国",
+      "education": "最高学历",
+      "high_school": "高中/中专",
+      "associate": "大专",
+      "bachelor": "本科",
+      "master": "硕士",
+      "phd": "博士",
+      "occupation": "职业/专业方向",
+      "occupation_placeholder": "如：软件工程师、金融分析师、医生",
+      "work_experience": "工作年限",
+      "has_job_offer": "已有海外工作offer",
+      "english_level": "英语水平",
+      "english_none": "基本不懂",
+      "english_basic": "日常对话（A2）",
+      "english_intermediate": "工作交流（B2）",
+      "english_advanced": "流利（C1）",
+      "english_native": "母语级别（C2）",
+      "other_languages": "其他语言（可选）",
+      "other_languages_placeholder": "如：日语N2、法语B1",
+      "funds_cny": "可用资金（人民币）",
+      "funds_cny_placeholder": "如：500000",
+      "funds_cny_hint": "包括存款、可变现资产等",
+      "monthly_income": "月收入（人民币，可选）",
+      "monthly_income_placeholder": "如：30000",
+      "has_passive_income": "有稳定被动收入",
+      "has_passive_income_hint": "如房租、股息、退休金等",
+      "target": "目标国家/地区",
+      "target_placeholder": "如：葡萄牙、欧洲、东南亚、日本",
+      "target_hint": "可输入具体国家或宽泛地区",
+      "motivations": "移民动机（可多选）",
+      "motivation_work": "工作/职业发展",
+      "motivation_retirement": "退休/养老",
+      "motivation_investment": "投资/资产配置",
+      "motivation_education": "子女教育",
+      "motivation_lifestyle": "生活方式/气候",
+      "motivation_safety": "安全/稳定",
+      "motivation_family": "家庭团聚",
+      "motivation_tax": "税务规划",
+      "timeline_preference": "期望移民时间",
+      "timeline_asap": "越快越好（1-2年内）",
+      "timeline_3years": "3年内",
+      "timeline_5years": "5年内",
+      "timeline_flexible": "时间灵活",
+      "willing_to_learn_language": "愿意学习当地语言",
+      "willing_to_renounce": "愿意考虑放弃中国国籍"
+    },
+    "buttons": {
+      "next": "下一步",
+      "prev": "上一步",
+      "submit": "开始评估",
+      "analyzing": "AI 分析中..."
+    },
+    "progress": "第 {current} 步，共 {total} 步"
+  },
+  "result": {
+    "title": "移民评估报告",
+    "subtitle": "基于您的信息生成的专属分析",
+    "verdict": {
+      "feasible": "整体可行",
+      "partially_feasible": "部分可行",
+      "not_feasible": "当前条件不足"
+    },
+    "pathways": {
+      "title": "可行路径",
+      "feasibility": "可行性",
+      "timeline": "预计时间",
+      "cost": "一次性费用",
+      "pr": "可获永居",
+      "citizenship": "可入籍",
+      "yes": "是",
+      "no": "否",
+      "years": "年",
+      "months": "个月",
+      "met": "已满足",
+      "gaps": "待完善",
+      "steps": "步骤规划"
+    },
+    "financial": {
+      "title": "财务分析",
+      "subtitle": "您的资金在目标国可以维持多久",
+      "frugal": "紧凑生活",
+      "comfortable": "舒适生活",
+      "wealthy": "富裕生活",
+      "per_month": "/月",
+      "sustainable": "可维持",
+      "one_time": "一次性移民费用",
+      "visa_fees": "签证申请费",
+      "legal_fees": "律师/中介费",
+      "relocation": "搬迁费用",
+      "total": "合计"
+    },
+    "timeline": {
+      "title": "时间规划",
+      "preparation": "准备阶段",
+      "application": "申请阶段",
+      "approval": "审批阶段",
+      "total": "总计",
+      "milestones": "关键里程碑"
+    },
+    "life": {
+      "title": "生活规划",
+      "housing": "住房",
+      "healthcare": "医疗",
+      "tax": "税务",
+      "integration": "融入建议",
+      "community": "华人社区",
+      "education": "子女教育"
+    },
+    "restart": "重新评估",
+    "share": "分享报告"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了，请重试",
+    "lang_switch": "English"
+  }
+}
