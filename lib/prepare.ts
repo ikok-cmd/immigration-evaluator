@@ -1,9 +1,15 @@
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.LLM_API_KEY,
-  baseURL: process.env.LLM_BASE_URL || "https://api.deepseek.com/v1",
-});
+let _client: OpenAI | null = null;
+function getClient(): OpenAI {
+  if (!_client) {
+    _client = new OpenAI({
+      apiKey: process.env.LLM_API_KEY,
+      baseURL: process.env.LLM_BASE_URL || "https://api.deepseek.com/v1",
+    });
+  }
+  return _client;
+}
 
 export type PrepCategory =
   | "language"
@@ -176,7 +182,7 @@ export async function generatePreparationPlan(
 ): Promise<void> {
   const model = process.env.LLM_MODEL || "deepseek-chat";
 
-  const stream = await client.chat.completions.create({
+  const stream = await getClient().chat.completions.create({
     model,
     max_tokens: 4000,
     stream: true,
