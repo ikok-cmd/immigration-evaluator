@@ -1,16 +1,5 @@
-import OpenAI from "openai";
 import { SYSTEM_PROMPT, buildUserPrompt, UserFormData } from "./prompts";
-
-let _client: OpenAI | null = null;
-function getClient(): OpenAI {
-  if (!_client) {
-    _client = new OpenAI({
-      apiKey: process.env.LLM_API_KEY,
-      baseURL: process.env.LLM_BASE_URL || "https://api.deepseek.com/v1",
-    });
-  }
-  return _client;
-}
+import { streamChatCompletion } from "./llm-client";
 
 export interface EvaluationResult {
   pathways: Pathway[];
@@ -88,23 +77,10 @@ export async function evaluateImmigration(
   formData: UserFormData,
   onChunk?: (text: string) => void
 ): Promise<void> {
-  const userPrompt = buildUserPrompt(formData);
-  const model = process.env.LLM_MODEL || "deepseek-chat";
-
-  const stream = await getClient().chat.completions.create({
-    model,
-    max_tokens: 8000,
-    stream: true,
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      { role: "user", content: userPrompt },
-    ],
+  await streamChatCompletion({
+    system: SYSTEM_PROMPT,
+    user: buildUserPrompt(formData),
+    maxTokens: 8000,
+    onChunk,
   });
-
-  for await (const chunk of stream) {
-    const delta = chunk.choices[0]?.delta?.content;
-    if (delta) {
-      onChunk?.(delta);
-    }
-  }
 }

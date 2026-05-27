@@ -1,16 +1,5 @@
-import OpenAI from "openai";
 import { PathwayContext, UserContext } from "@/lib/prepare";
-
-let _client: OpenAI | null = null;
-function getClient(): OpenAI {
-  if (!_client) {
-    _client = new OpenAI({
-      apiKey: process.env.LLM_API_KEY,
-      baseURL: process.env.LLM_BASE_URL || "https://api.deepseek.com/v1",
-    });
-  }
-  return _client;
-}
+import { streamChatCompletion } from "./llm-client";
 
 export type LifestyleTierKey = "frugal" | "comfortable" | "wealthy";
 
@@ -162,22 +151,10 @@ export async function generateLifestylePreview(
   req: LifestyleRequest,
   onChunk?: (text: string) => void
 ): Promise<void> {
-  const model = process.env.LLM_MODEL || "deepseek-chat";
-
-  const stream = await getClient().chat.completions.create({
-    model,
-    max_tokens: 5000,
-    stream: true,
-    messages: [
-      { role: "system", content: LIFESTYLE_SYSTEM_PROMPT },
-      { role: "user", content: buildUserPrompt(req) },
-    ],
+  await streamChatCompletion({
+    system: LIFESTYLE_SYSTEM_PROMPT,
+    user: buildUserPrompt(req),
+    maxTokens: 5000,
+    onChunk,
   });
-
-  for await (const chunk of stream) {
-    const delta = chunk.choices[0]?.delta?.content;
-    if (delta) {
-      onChunk?.(delta);
-    }
-  }
 }
