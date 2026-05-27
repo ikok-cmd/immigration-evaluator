@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Pathway } from "@/lib/claude";
-import { ChevronDown, ChevronUp, CheckCircle2, XCircle, Clock, DollarSign } from "lucide-react";
+import { UserFormData } from "@/lib/prompts";
+import { UserContext, PathwayContext } from "@/lib/prepare";
+import { GapPreparation } from "./GapPreparation";
+import { LifestylePreviewView } from "./LifestylePreview";
+import { ChevronDown, ChevronUp, CheckCircle2, XCircle, Clock, DollarSign, Sparkles, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface Props {
@@ -17,10 +21,78 @@ const feasibilityColor = {
   low: { bar: "bg-red-500", text: "text-red-700", bg: "bg-red-100" },
 };
 
+function buildUserContext(form: UserFormData | null): UserContext | null {
+  if (!form) return null;
+  return {
+    age: form.age,
+    english_level: form.english_level,
+    other_languages: form.other_languages,
+    occupation: form.occupation,
+    work_experience: form.work_experience,
+    education: form.education,
+    funds_cny: form.funds_cny,
+    monthly_income: form.monthly_income,
+    nationality: form.nationality,
+    why_this_place: form.why_this_place,
+  };
+}
+
 export function PathwayCard({ pathway, rank }: Props) {
   const t = useTranslations("result");
+  const tPrep = useTranslations("result.prepare");
+  const tLife = useTranslations("result.lifestyle");
   const [expanded, setExpanded] = useState(rank === 0);
+  // openGaps = currently visible; mountedGaps = ever opened (kept in DOM to cache LLM output)
+  const [openGaps, setOpenGaps] = useState<Set<number>>(new Set());
+  const [mountedGaps, setMountedGaps] = useState<Set<number>>(new Set());
+  const [lifestyleOpen, setLifestyleOpen] = useState(false);
+  const [lifestyleEverOpened, setLifestyleEverOpened] = useState(false);
+  const [userContext, setUserContext] = useState<UserContext | null>(null);
   const colors = feasibilityColor[pathway.feasibility_level];
+
+  useEffect(() => {
+    try {
+      const stored = sessionStorage.getItem("immigrationForm");
+      if (stored) {
+        setUserContext(buildUserContext(JSON.parse(stored) as UserFormData));
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const toggleGap = (i: number) => {
+    setOpenGaps((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) {
+        next.delete(i);
+      } else {
+        next.add(i);
+        // mark as mounted so it stays in DOM after collapse (cache the LLM output)
+        setMountedGaps((m) => {
+          if (m.has(i)) return m;
+          const nm = new Set(m);
+          nm.add(i);
+          return nm;
+        });
+      }
+      return next;
+    });
+  };
+
+  const toggleLifestyle = () => {
+    setLifestyleOpen((v) => {
+      if (!v) setLifestyleEverOpened(true);
+      return !v;
+    });
+  };
+
+  const pathwayCtx: PathwayContext = {
+    name: pathway.name,
+    country: pathway.country,
+    visa_type: pathway.visa_type,
+    timeline_months: pathway.timeline_months,
+  };
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
@@ -122,13 +194,56 @@ export function PathwayCard({ pathway, rank }: Props) {
                 <XCircle className="h-4 w-4" />
                 {t("pathways.gaps")}
               </h4>
-              <ul className="space-y-1">
-                {pathway.gaps?.map((g, i) => (
-                  <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
-                    <span className="text-orange-400 mt-0.5">→</span>
-                    {g}
-                  </li>
-                ))}
+              <ul className="space-y-2">
+                {pathway.gaps?.map((g, i) => {
+                  const isOpen = openGaps.has(i);
+                  const isMounted = mountedGaps.has(i);
+                  return (
+                    <li key={i} className="text-sm text-gray-700">
+                      <div className="flex items-start gap-2">
+                        <span className="text-orange-400 mt-0.5">→</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-start justify-between gap-2">
+                            <span className="flex-1 min-w-0">{g}</span>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (!userContext) return;
+                                toggleGap(i);
+                              }}
+                              disabled={!userContext}
+                              className={`text-xs font-medium px-2.5 py-1 rounded-full transition-colors flex items-center gap-1 flex-shrink-0 ${
+                                isOpen
+                                  ? "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                                  : "bg-orange-100 text-orange-700 hover:bg-orange-200"
+                              } disabled:opacity-50 disabled:cursor-not-allowed`}
+                              title={
+                                userContext
+                                  ? undefined
+                                  : "Form data unavailable, please restart from home"
+                              }
+                            >
+                              <Sparkles className="h-3 w-3" />
+                              {isOpen ? tPrep("collapse") : tPrep("cta")}
+                            </button>
+                          </div>
+                          {isMounted && userContext && (
+                            <div
+                              onClick={(e) => e.stopPropagation()}
+                              className={isOpen ? "" : "hidden"}
+                            >
+                              <GapPreparation
+                                gap={g}
+                                pathway={pathwayCtx}
+                                userContext={userContext}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -168,6 +283,35 @@ export function PathwayCard({ pathway, rank }: Props) {
 
           <div className="bg-gray-50 rounded-lg p-4">
             <p className="text-sm text-gray-700 leading-relaxed">{pathway.summary_zh}</p>
+          </div>
+
+          {/* Lifestyle preview CTA */}
+          <div onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => {
+                if (!userContext) return;
+                toggleLifestyle();
+              }}
+              disabled={!userContext}
+              className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-dashed font-medium text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                lifestyleOpen
+                  ? "border-indigo-300 bg-indigo-50 text-indigo-700"
+                  : "border-gray-200 bg-white text-gray-700 hover:border-indigo-300 hover:bg-indigo-50/40 hover:text-indigo-700"
+              }`}
+              title={
+                userContext
+                  ? undefined
+                  : "Form data unavailable, please restart from home"
+              }
+            >
+              <MapPin className="h-4 w-4" />
+              {lifestyleOpen ? tLife("collapse") : tLife("cta")}
+            </button>
+            {lifestyleEverOpened && userContext && (
+              <div className={lifestyleOpen ? "" : "hidden"}>
+                <LifestylePreviewView pathway={pathwayCtx} userContext={userContext} />
+              </div>
+            )}
           </div>
         </div>
       )}

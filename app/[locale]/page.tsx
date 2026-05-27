@@ -9,6 +9,7 @@ import { Step2Finance } from "@/components/form/Step2Finance";
 import { Step3Goals } from "@/components/form/Step3Goals";
 import { UserFormData } from "@/lib/prompts";
 import { EvaluationResult } from "@/lib/claude";
+import { streamSSE } from "@/lib/sse-client";
 import { Globe } from "lucide-react";
 
 function FormSteps() {
@@ -74,61 +75,15 @@ function MainForm() {
     setError(null);
 
     try {
-      const response = await fetch("/api/evaluate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData as UserFormData),
-      });
-
-      if (!response.body) throw new Error("No response body");
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let accumulated = "";
-      let sseBuffer = "";
-
-      outer: while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        sseBuffer += decoder.decode(value, { stream: true });
-
-        // process all complete SSE events (delimited by \n\n)
-        const parts = sseBuffer.split("\n\n");
-        sseBuffer = parts.pop() ?? ""; // keep incomplete trailing fragment
-
-        for (const part of parts) {
-          const line = part.trim();
-          if (!line.startsWith("data: ")) continue;
-          try {
-            const data = JSON.parse(line.slice(6));
-            if (data.error) {
-              throw new Error(`API 错误: ${data.error}`);
-            }
-            if (data.chunk) {
-              // restore escaped newlines
-              accumulated += data.chunk.replace(/\\n/g, "\n");
-            }
-            if (data.done) break outer;
-          } catch (parseErr) {
-            if (parseErr instanceof Error && parseErr.message.startsWith("API 错误")) {
-              throw parseErr;
-            }
-          }
-        }
-      }
-
-      if (!accumulated.trim()) {
-        throw new Error("未收到分析结果，请重试");
-      }
-
-      const cleaned = accumulated.trim().replace(/^```json\s*/,"").replace(/```\s*$/,"");
-      const result: EvaluationResult = JSON.parse(cleaned);
+      const result = await streamSSE<EvaluationResult>(
+        "/api/evaluate",
+        formData as UserFormData
+      );
       sessionStorage.setItem("immigrationResult", JSON.stringify(result));
       sessionStorage.setItem("immigrationForm", JSON.stringify(formData));
       router.push(`/${locale}/result`);
     } catch (err) {
-      setError(String(err));
+      setError(err instanceof Error ? err.message : String(err));
       setIsLoading(false);
     }
   };
@@ -185,10 +140,10 @@ export default function HomePage() {
         <main className="max-w-2xl mx-auto px-4 py-10">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">
-              移民适合去哪？
+              润哪儿？
             </h1>
             <p className="mt-3 text-lg text-gray-600">
-              输入您的基本信息，AI 为您分析最优移民路径
+              三分钟填完，AI 替你算好下一站往哪跑 🧳
             </p>
           </div>
 

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "./FormContext";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { NativeSelect } from "@/components/ui/native-select";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Loader2, Search } from "lucide-react";
@@ -86,6 +87,18 @@ export function Step3Goals({ onSubmit, isLoading }: Props) {
               );
             })}
           </div>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="why_this_place">{t("fields.why_this_place")}</Label>
+          <Textarea
+            id="why_this_place"
+            placeholder={t("fields.why_this_place_placeholder")}
+            value={formData.why_this_place || ""}
+            onChange={(e) => updateForm({ why_this_place: e.target.value })}
+            rows={3}
+          />
+          <p className="text-sm text-gray-500">{t("fields.why_this_place_hint")}</p>
         </div>
 
         <div className="space-y-2">

@@ -47,7 +47,7 @@ export function Verdict({ result }: Props) {
         <div className="flex-1">
           <div className="flex items-center gap-3 flex-wrap">
             <h2 className={`text-2xl font-bold ${config.textColor}`}>
-              {t(`result.verdict.${result.overall_verdict}`)}
+              {t(`verdict.${result.overall_verdict}`)}
             </h2>
             {result.top_recommendation && (
               <span className={`text-sm px-3 py-1 rounded-full font-medium ${config.badgeColor}`}>

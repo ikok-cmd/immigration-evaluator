@@ -141,6 +141,7 @@ export function buildUserPrompt(formData: UserFormData): string {
 ## 移民目标
 - 目标地区/国家：${target}
 - 移民动机：${formData.motivations.join("、")}
+- 选择这里的具体原因/向往：${formData.why_this_place || "（未填写）"}
 - 期望时间：${formData.timeline_preference || "越快越好"}
 - 是否愿意学习当地语言：${formData.willing_to_learn_language ? "是" : "否"}
 - 是否愿意放弃中国国籍：${formData.willing_to_renounce ? "愿意考虑" : "不愿意"}
@@ -166,6 +167,7 @@ export interface UserFormData {
   has_passive_income: boolean;
   target: string;
   motivations: string[];
+  why_this_place?: string;
   timeline_preference: string;
   willing_to_learn_language: boolean;
   willing_to_renounce: boolean;
