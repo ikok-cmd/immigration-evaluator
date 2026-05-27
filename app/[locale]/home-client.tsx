@@ -10,7 +10,7 @@ import { Step3Goals } from "@/components/form/Step3Goals";
 import { UserFormData } from "@/lib/prompts";
 import { EvaluationResult } from "@/lib/claude";
 import { streamSSE } from "@/lib/sse-client";
-import { Globe } from "lucide-react";
+import { Globe, Check, Loader2, Circle, Sparkles } from "lucide-react";
 
 function FormSteps() {
   const { step } = useForm();
@@ -66,18 +66,21 @@ function FormSteps() {
 function MainForm() {
   const { step, formData } = useForm();
   const [isLoading, setIsLoading] = useState(false);
+  const [streamText, setStreamText] = useState("");
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const locale = useLocale();
 
   const handleSubmit = async () => {
     setIsLoading(true);
+    setStreamText("");
     setError(null);
 
     try {
       const result = await streamSSE<EvaluationResult>(
         "/api/evaluate",
-        formData as UserFormData
+        formData as UserFormData,
+        { onProgress: (acc) => setStreamText(acc) }
       );
       sessionStorage.setItem("immigrationResult", JSON.stringify(result));
       sessionStorage.setItem("immigrationForm", JSON.stringify(formData));
@@ -95,9 +98,79 @@ function MainForm() {
       {step === 3 && (
         <Step3Goals onSubmit={handleSubmit} isLoading={isLoading} />
       )}
+      {isLoading && <StreamingProgress text={streamText} />}
       {error && (
         <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
           {error}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const STAGES = [
+  { key: '"pathways"',           label: "🛤️ 在分析可行的移民路径" },
+  { key: '"financial_analysis"', label: "💰 在测算三档生活的财务可行性" },
+  { key: '"timeline"',           label: "⏱️ 在拼接整体时间线" },
+  { key: '"life_planning"',      label: "🏠 在写住房、医疗、税务建议" },
+  { key: '"overall_verdict"',    label: "⚖️ 在给综合判断" },
+  { key: '"summary_zh"',         label: "✍️ 在收尾摘要" },
+];
+
+function StreamingProgress({ text }: { text: string }) {
+  const found = STAGES.map((s) => text.includes(s.key));
+  // current = first un-finished stage that has appeared
+  let currentIdx = -1;
+  for (let i = found.length - 1; i >= 0; i--) {
+    if (found[i]) {
+      currentIdx = i;
+      break;
+    }
+  }
+  // a stage is "done" once a later stage has started
+  return (
+    <div className="mt-6 rounded-2xl border-2 border-blue-100 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/60 p-5">
+      <div className="flex items-center gap-2 text-sm font-semibold text-blue-700 mb-4">
+        <Sparkles className="h-4 w-4 animate-pulse" />
+        AI 正在分析（已生成 {text.length.toLocaleString()} 字）
+      </div>
+      <ul className="space-y-2.5">
+        {STAGES.map((s, i) => {
+          const isDone = i < currentIdx;
+          const isCurrent = i === currentIdx;
+          const isPending = !found[i];
+          return (
+            <li key={s.key} className="flex items-center gap-2.5 text-sm">
+              {isDone ? (
+                <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+              ) : isCurrent ? (
+                <Loader2 className="h-4 w-4 text-blue-600 animate-spin flex-shrink-0" />
+              ) : (
+                <Circle className="h-4 w-4 text-gray-300 flex-shrink-0" />
+              )}
+              <span
+                className={
+                  isPending
+                    ? "text-gray-400"
+                    : isCurrent
+                    ? "text-blue-700 font-medium"
+                    : "text-gray-700"
+                }
+              >
+                {s.label}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+      {text.length > 80 && (
+        <div className="mt-4 pt-3 border-t border-blue-100">
+          <div className="text-[11px] uppercase tracking-wide text-gray-400 font-semibold mb-1.5">
+            实时输出预览
+          </div>
+          <div className="text-xs text-gray-600 font-mono leading-relaxed max-h-24 overflow-hidden">
+            …{text.slice(-280).replace(/\s+/g, " ")}
+          </div>
         </div>
       )}
     </div>
