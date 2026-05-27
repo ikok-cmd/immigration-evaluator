@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { evaluateImmigration } from "@/lib/claude";
 import { UserFormData } from "@/lib/prompts";
 
+export const runtime = "edge";
+
 export async function POST(req: NextRequest) {
   try {
     const formData: UserFormData = await req.json();

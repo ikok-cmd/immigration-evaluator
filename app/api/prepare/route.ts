@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generatePreparationPlan, PrepareRequest } from "@/lib/prepare";
 
+export const runtime = "edge";
+
 export async function POST(req: NextRequest) {
   try {
     const body: PrepareRequest = await req.json();

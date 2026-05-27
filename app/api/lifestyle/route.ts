@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generateLifestylePreview, LifestyleRequest } from "@/lib/lifestyle";
 
+export const runtime = "edge";
+
 export async function POST(req: NextRequest) {
   try {
     const body: LifestyleRequest = await req.json();
