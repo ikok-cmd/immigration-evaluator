@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   description: "AI 驱动的移民路径规划工具",
 };
 
+export const runtime = "edge";
+
 export default async function LocaleLayout({
   children,
   params,
