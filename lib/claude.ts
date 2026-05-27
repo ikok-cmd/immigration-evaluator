@@ -10,14 +10,14 @@ export interface EvaluationResult {
   verdict_reason: string;
   top_recommendation: string;
   summary_zh: string;
-  summary_en: string;
+  summary_en?: string;
 }
 
 export interface Pathway {
   name: string;
-  name_en: string;
+  name_en?: string;
   country: string;
-  country_code: string;
+  country_code?: string;
   visa_type: string;
   feasibility_score: number;
   feasibility_level: "high" | "medium" | "low";
@@ -31,7 +31,7 @@ export interface Pathway {
   citizenship_possible: boolean;
   citizenship_after_years?: number;
   summary_zh: string;
-  summary_en: string;
+  summary_en?: string;
 }
 
 export interface FinancialAnalysis {
@@ -80,7 +80,7 @@ export async function evaluateImmigration(
   await streamChatCompletion({
     system: SYSTEM_PROMPT,
     user: buildUserPrompt(formData),
-    maxTokens: 8000,
+    maxTokens: 4500,
     onChunk,
   });
 }
